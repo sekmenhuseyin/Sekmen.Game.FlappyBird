@@ -19,15 +19,29 @@ namespace Sekmen.Game.FlappyBird
         {
             lblEnd1.Text = @"Game Over";
             lblEnd2.Text = @"Your score: " + _score;
-            lblCredits.Text = @"Credits";
-            lblEnd1.Visible = lblEnd2.Visible = lblCredits.Visible = false;
+            lblEnd1.Visible = lblEnd2.Visible =  false;
         }
 
-        private void timerGame_Tick(object sender, EventArgs e)
+        private void TimerGame_Tick(object sender, EventArgs e)
         {
+            lblScore.Text = @"Score: " + _score;
+
             picPipeBottom.Left -= _pipeSpeed;
             picPipeTop.Left -= _pipeSpeed;
             picFlappyBird.Top += _gravity;
+
+            if (picPipeTop.Left < -picPipeTop.Width)
+            {
+                picPipeTop.Left = picPipeBottom.Left = Width + picPipeTop.Width;
+                _score++;
+            }
+
+            if (picFlappyBird.Bounds.IntersectsWith(picGround.Bounds) ||
+                picFlappyBird.Bounds.IntersectsWith(picPipeBottom.Bounds) ||
+                picFlappyBird.Bounds.IntersectsWith(picPipeTop.Bounds))
+            {
+                GameEnd();
+            }
         }
 
         private void FrmMain_KeyDown(object sender, KeyEventArgs e)
@@ -48,7 +62,8 @@ namespace Sekmen.Game.FlappyBird
 
         private void GameEnd()
         {
-
+            timerGame.Stop();
+            lblEnd1.Visible = lblEnd2.Visible =  true;
         }
     }
 }

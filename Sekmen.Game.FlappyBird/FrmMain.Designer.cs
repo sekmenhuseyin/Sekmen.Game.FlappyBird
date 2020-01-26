@@ -37,7 +37,6 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.lblEnd1 = new System.Windows.Forms.Label();
             this.lblEnd2 = new System.Windows.Forms.Label();
-            this.lblCredits = new System.Windows.Forms.Label();
             ((System.ComponentModel.ISupportInitialize)(this.picFlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeBottom)).BeginInit();
@@ -47,19 +46,19 @@
             // picFlappyBird
             // 
             this.picFlappyBird.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.bird;
-            this.picFlappyBird.Location = new System.Drawing.Point(12, 175);
+            this.picFlappyBird.Location = new System.Drawing.Point(12, 12);
             this.picFlappyBird.Name = "picFlappyBird";
-            this.picFlappyBird.Size = new System.Drawing.Size(80, 60);
-            this.picFlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.AutoSize;
+            this.picFlappyBird.Size = new System.Drawing.Size(62, 52);
+            this.picFlappyBird.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.picFlappyBird.TabIndex = 0;
             this.picFlappyBird.TabStop = false;
             // 
             // picPipeTop
             // 
             this.picPipeTop.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipedown;
-            this.picPipeTop.Location = new System.Drawing.Point(302, 0);
+            this.picPipeTop.Location = new System.Drawing.Point(708, -161);
             this.picPipeTop.Name = "picPipeTop";
-            this.picPipeTop.Size = new System.Drawing.Size(80, 189);
+            this.picPipeTop.Size = new System.Drawing.Size(80, 248);
             this.picPipeTop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeTop.TabIndex = 1;
             this.picPipeTop.TabStop = false;
@@ -67,9 +66,9 @@
             // picPipeBottom
             // 
             this.picPipeBottom.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipe;
-            this.picPipeBottom.Location = new System.Drawing.Point(302, 277);
+            this.picPipeBottom.Location = new System.Drawing.Point(708, 277);
             this.picPipeBottom.Name = "picPipeBottom";
-            this.picPipeBottom.Size = new System.Drawing.Size(80, 125);
+            this.picPipeBottom.Size = new System.Drawing.Size(80, 272);
             this.picPipeBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeBottom.TabIndex = 2;
             this.picPipeBottom.TabStop = false;
@@ -88,47 +87,40 @@
             // 
             this.timerGame.Enabled = true;
             this.timerGame.Interval = 15;
-            this.timerGame.Tick += new System.EventHandler(this.timerGame_Tick);
+            this.timerGame.Tick += new System.EventHandler(this.TimerGame_Tick);
             // 
             // lblScore
             // 
             this.lblScore.AutoSize = true;
+            this.lblScore.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblScore.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblScore.Location = new System.Drawing.Point(130, 36);
+            this.lblScore.Location = new System.Drawing.Point(295, 21);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(35, 13);
+            this.lblScore.Size = new System.Drawing.Size(57, 20);
             this.lblScore.TabIndex = 4;
             this.lblScore.Text = "label1";
             // 
             // lblEnd1
             // 
             this.lblEnd1.AutoSize = true;
+            this.lblEnd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnd1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblEnd1.Location = new System.Drawing.Point(130, 61);
+            this.lblEnd1.Location = new System.Drawing.Point(250, 138);
             this.lblEnd1.Name = "lblEnd1";
-            this.lblEnd1.Size = new System.Drawing.Size(35, 13);
+            this.lblEnd1.Size = new System.Drawing.Size(76, 25);
             this.lblEnd1.TabIndex = 5;
             this.lblEnd1.Text = "label2";
             // 
             // lblEnd2
             // 
             this.lblEnd2.AutoSize = true;
+            this.lblEnd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblEnd2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblEnd2.Location = new System.Drawing.Point(130, 74);
+            this.lblEnd2.Location = new System.Drawing.Point(250, 174);
             this.lblEnd2.Name = "lblEnd2";
-            this.lblEnd2.Size = new System.Drawing.Size(35, 13);
+            this.lblEnd2.Size = new System.Drawing.Size(76, 25);
             this.lblEnd2.TabIndex = 6;
             this.lblEnd2.Text = "label3";
-            // 
-            // lblCredits
-            // 
-            this.lblCredits.AutoSize = true;
-            this.lblCredits.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblCredits.Location = new System.Drawing.Point(130, 87);
-            this.lblCredits.Name = "lblCredits";
-            this.lblCredits.Size = new System.Drawing.Size(35, 13);
-            this.lblCredits.TabIndex = 7;
-            this.lblCredits.Text = "label4";
             // 
             // FrmMain
             // 
@@ -136,7 +128,6 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.lblCredits);
             this.Controls.Add(this.lblEnd2);
             this.Controls.Add(this.lblEnd1);
             this.Controls.Add(this.lblScore);
@@ -169,7 +160,6 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblEnd1;
         private System.Windows.Forms.Label lblEnd2;
-        private System.Windows.Forms.Label lblCredits;
     }
 }
 
