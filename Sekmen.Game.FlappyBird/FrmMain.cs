@@ -5,10 +5,10 @@ namespace Sekmen.Game.FlappyBird
 {
     public partial class FrmMain : Form
     {
-        private bool _jumping = false;
+        private bool _jumping;
         private int _pipeSpeed = 5;
         private int _gravity = 5;
-        private int _score = 0;
+        private int _score;
 
         public FrmMain()
         {
@@ -18,8 +18,7 @@ namespace Sekmen.Game.FlappyBird
         private void FrmMain_Load(object sender, EventArgs e)
         {
             lblEnd1.Text = @"Game Over";
-            lblEnd2.Text = @"Your score: " + _score;
-            lblEnd1.Visible = lblEnd2.Visible =  false;
+            lblEnd1.Visible = lblEnd2.Visible = btnRestart.Visible = false;
         }
 
         private void TimerGame_Tick(object sender, EventArgs e)
@@ -63,7 +62,17 @@ namespace Sekmen.Game.FlappyBird
         private void GameEnd()
         {
             timerGame.Stop();
-            lblEnd1.Visible = lblEnd2.Visible =  true;
+            lblEnd2.Text = @"Your score: " + _score;
+            lblEnd1.Visible = lblEnd2.Visible = btnRestart.Visible = true;
+        }
+
+        private void BtnRestart_Click(object sender, EventArgs e)
+        {
+            _score = 0;
+            picPipeTop.Left = picPipeBottom.Left = Width + picPipeTop.Width;
+            lblEnd1.Visible = lblEnd2.Visible = btnRestart.Visible = false;
+            picFlappyBird.Top = 0;
+            timerGame.Start();
         }
     }
 }

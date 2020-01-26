@@ -37,6 +37,7 @@
             this.lblScore = new System.Windows.Forms.Label();
             this.lblEnd1 = new System.Windows.Forms.Label();
             this.lblEnd2 = new System.Windows.Forms.Label();
+            this.btnRestart = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.picFlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeBottom)).BeginInit();
@@ -122,12 +123,24 @@
             this.lblEnd2.TabIndex = 6;
             this.lblEnd2.Text = "label3";
             // 
+            // btnRestart
+            // 
+            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnRestart.Location = new System.Drawing.Point(277, 218);
+            this.btnRestart.Name = "btnRestart";
+            this.btnRestart.Size = new System.Drawing.Size(160, 45);
+            this.btnRestart.TabIndex = 7;
+            this.btnRestart.Text = "Restart";
+            this.btnRestart.UseVisualStyleBackColor = true;
+            this.btnRestart.Click += new System.EventHandler(this.BtnRestart_Click);
+            // 
             // FrmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(800, 450);
+            this.Controls.Add(this.btnRestart);
             this.Controls.Add(this.lblEnd2);
             this.Controls.Add(this.lblEnd1);
             this.Controls.Add(this.lblScore);
@@ -160,6 +173,7 @@
         private System.Windows.Forms.Label lblScore;
         private System.Windows.Forms.Label lblEnd1;
         private System.Windows.Forms.Label lblEnd2;
+        private System.Windows.Forms.Button btnRestart;
     }
 }
 
