@@ -10,7 +10,6 @@ namespace Sekmen.Game.FlappyBird
         private int _pipeSpeed = 5;
         private int _gravity = 5;
         private int _score;
-        private Rectangle _bounds;
         public FrmMain()
         {
             InitializeComponent();
@@ -18,7 +17,6 @@ namespace Sekmen.Game.FlappyBird
 
         private void FrmMain_Load(object sender, EventArgs e)
         {
-            _bounds = new Rectangle(picFlappyBird.Bounds.X + 2, picFlappyBird.Bounds.Y + 2, picFlappyBird.Bounds.Width - 2, picFlappyBird.Bounds.Height - 2);
             BtnRestart_Click(sender, e);
         }
 
@@ -42,11 +40,12 @@ namespace Sekmen.Game.FlappyBird
                 _score++;
             }
 
-            if (picFlappyBird.Bounds.IntersectsWith(picGround.Bounds) ||
-                picFlappyBird.Bounds.IntersectsWith(picPipeBottom.Bounds) ||
-                picFlappyBird.Bounds.IntersectsWith(picPipeTop.Bounds) ||
-                picFlappyBird.Bounds.IntersectsWith(picPipeBottom2.Bounds) ||
-                picFlappyBird.Bounds.IntersectsWith(picPipeTop2.Bounds))
+            var bounds = new Rectangle(picFlappyBird.Bounds.X + 2, picFlappyBird.Bounds.Y + 2, picFlappyBird.Bounds.Width - 4, picFlappyBird.Bounds.Height - 4);
+            if (bounds.IntersectsWith(picGround.Bounds) ||
+                bounds.IntersectsWith(picPipeBottom.Bounds) ||
+                bounds.IntersectsWith(picPipeTop.Bounds) ||
+                bounds.IntersectsWith(picPipeBottom2.Bounds) ||
+                bounds.IntersectsWith(picPipeTop2.Bounds))
             {
                 GameEnd();
             }
@@ -71,19 +70,19 @@ namespace Sekmen.Game.FlappyBird
         private void GameEnd()
         {
             timerGame.Stop();
-            lblEnd2.Text = @"Your score: " + _score;
-            lblEnd1.Visible = lblEnd2.Visible = btnRestart.Visible = true;
+            lblEnd.Visible = listScores.Visible = btnStart.Visible = true;
         }
 
         private void BtnRestart_Click(object sender, EventArgs e)
         {
             _score = 0;
             picPipeTop.Left = picPipeBottom.Left = Width + picPipeTop.Width;
-            picPipeTop2.Left = picPipeBottom2.Left = (int)(Width * 1.7) + picPipeTop2.Width;
-            lblEnd1.Visible = lblEnd2.Visible = btnRestart.Visible = false;
+            picPipeTop2.Left = picPipeBottom2.Left = (int)(Width * 1.6) + picPipeTop2.Width;
+            lblEnd.Visible = listScores.Visible = btnStart.Visible = false;
+            lblScore.Visible = true;
             picFlappyBird.Top = 0;
             timerGame.Start();
-            this.Focus();
+            Focus();
         }
     }
 }

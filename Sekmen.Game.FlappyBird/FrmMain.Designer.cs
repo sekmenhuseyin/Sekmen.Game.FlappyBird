@@ -35,11 +35,13 @@
             this.picGround = new System.Windows.Forms.PictureBox();
             this.timerGame = new System.Windows.Forms.Timer(this.components);
             this.lblScore = new System.Windows.Forms.Label();
-            this.lblEnd1 = new System.Windows.Forms.Label();
-            this.lblEnd2 = new System.Windows.Forms.Label();
-            this.btnRestart = new System.Windows.Forms.Button();
+            this.lblEnd = new System.Windows.Forms.Label();
+            this.btnStart = new System.Windows.Forms.Button();
             this.picPipeBottom2 = new System.Windows.Forms.PictureBox();
             this.picPipeTop2 = new System.Windows.Forms.PictureBox();
+            this.listScores = new System.Windows.Forms.ListView();
+            this.columnName = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
+            this.columnScore = ((System.Windows.Forms.ColumnHeader)(new System.Windows.Forms.ColumnHeader()));
             ((System.ComponentModel.ISupportInitialize)(this.picFlappyBird)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeTop)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.picPipeBottom)).BeginInit();
@@ -61,9 +63,9 @@
             // picPipeTop
             // 
             this.picPipeTop.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipedown;
-            this.picPipeTop.Location = new System.Drawing.Point(708, -161);
+            this.picPipeTop.Location = new System.Drawing.Point(708, -250);
             this.picPipeTop.Name = "picPipeTop";
-            this.picPipeTop.Size = new System.Drawing.Size(70, 248);
+            this.picPipeTop.Size = new System.Drawing.Size(70, 300);
             this.picPipeTop.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeTop.TabIndex = 1;
             this.picPipeTop.TabStop = false;
@@ -71,9 +73,9 @@
             // picPipeBottom
             // 
             this.picPipeBottom.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipe;
-            this.picPipeBottom.Location = new System.Drawing.Point(708, 218);
+            this.picPipeBottom.Location = new System.Drawing.Point(708, 200);
             this.picPipeBottom.Name = "picPipeBottom";
-            this.picPipeBottom.Size = new System.Drawing.Size(70, 331);
+            this.picPipeBottom.Size = new System.Drawing.Size(70, 300);
             this.picPipeBottom.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeBottom.TabIndex = 2;
             this.picPipeBottom.TabStop = false;
@@ -104,46 +106,36 @@
             this.lblScore.Size = new System.Drawing.Size(56, 20);
             this.lblScore.TabIndex = 4;
             this.lblScore.Text = "Score";
+            this.lblScore.Visible = false;
             // 
-            // lblEnd1
+            // lblEnd
             // 
-            this.lblEnd1.AutoSize = true;
-            this.lblEnd1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnd1.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblEnd1.Location = new System.Drawing.Point(250, 138);
-            this.lblEnd1.Name = "lblEnd1";
-            this.lblEnd1.Size = new System.Drawing.Size(130, 25);
-            this.lblEnd1.TabIndex = 5;
-            this.lblEnd1.Text = "Game Over";
+            this.lblEnd.AutoSize = true;
+            this.lblEnd.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.lblEnd.ForeColor = System.Drawing.SystemColors.Menu;
+            this.lblEnd.Location = new System.Drawing.Point(250, 80);
+            this.lblEnd.Name = "lblEnd";
+            this.lblEnd.Size = new System.Drawing.Size(140, 25);
+            this.lblEnd.TabIndex = 5;
+            this.lblEnd.Text = "High Scores";
             // 
-            // lblEnd2
+            // btnStart
             // 
-            this.lblEnd2.AutoSize = true;
-            this.lblEnd2.Font = new System.Drawing.Font("Microsoft Sans Serif", 15.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.lblEnd2.ForeColor = System.Drawing.SystemColors.Menu;
-            this.lblEnd2.Location = new System.Drawing.Point(236, 173);
-            this.lblEnd2.Name = "lblEnd2";
-            this.lblEnd2.Size = new System.Drawing.Size(130, 25);
-            this.lblEnd2.TabIndex = 6;
-            this.lblEnd2.Text = "Your Score";
-            // 
-            // btnRestart
-            // 
-            this.btnRestart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnRestart.Location = new System.Drawing.Point(241, 218);
-            this.btnRestart.Name = "btnRestart";
-            this.btnRestart.Size = new System.Drawing.Size(160, 45);
-            this.btnRestart.TabIndex = 7;
-            this.btnRestart.Text = "Restart";
-            this.btnRestart.UseVisualStyleBackColor = true;
-            this.btnRestart.Click += new System.EventHandler(this.BtnRestart_Click);
+            this.btnStart.Font = new System.Drawing.Font("Microsoft Sans Serif", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnStart.Location = new System.Drawing.Point(245, 321);
+            this.btnStart.Name = "btnStart";
+            this.btnStart.Size = new System.Drawing.Size(160, 45);
+            this.btnStart.TabIndex = 7;
+            this.btnStart.Text = "Start";
+            this.btnStart.UseVisualStyleBackColor = true;
+            this.btnStart.Click += new System.EventHandler(this.BtnRestart_Click);
             // 
             // picPipeBottom2
             // 
             this.picPipeBottom2.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipe;
-            this.picPipeBottom2.Location = new System.Drawing.Point(469, 334);
+            this.picPipeBottom2.Location = new System.Drawing.Point(469, 350);
             this.picPipeBottom2.Name = "picPipeBottom2";
-            this.picPipeBottom2.Size = new System.Drawing.Size(70, 272);
+            this.picPipeBottom2.Size = new System.Drawing.Size(70, 300);
             this.picPipeBottom2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeBottom2.TabIndex = 9;
             this.picPipeBottom2.TabStop = false;
@@ -151,12 +143,34 @@
             // picPipeTop2
             // 
             this.picPipeTop2.Image = global::Sekmen.Game.FlappyBird.Properties.Resources.pipedown;
-            this.picPipeTop2.Location = new System.Drawing.Point(469, -104);
+            this.picPipeTop2.Location = new System.Drawing.Point(469, -100);
             this.picPipeTop2.Name = "picPipeTop2";
-            this.picPipeTop2.Size = new System.Drawing.Size(70, 302);
+            this.picPipeTop2.Size = new System.Drawing.Size(70, 300);
             this.picPipeTop2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
             this.picPipeTop2.TabIndex = 8;
             this.picPipeTop2.TabStop = false;
+            // 
+            // listScores
+            // 
+            this.listScores.BackColor = System.Drawing.SystemColors.InfoText;
+            this.listScores.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.listScores.Columns.AddRange(new System.Windows.Forms.ColumnHeader[] {
+            this.columnName,
+            this.columnScore});
+            this.listScores.HideSelection = false;
+            this.listScores.Location = new System.Drawing.Point(191, 108);
+            this.listScores.Name = "listScores";
+            this.listScores.Size = new System.Drawing.Size(255, 207);
+            this.listScores.TabIndex = 10;
+            this.listScores.UseCompatibleStateImageBehavior = false;
+            // 
+            // columnName
+            // 
+            this.columnName.Text = "Name";
+            // 
+            // columnScore
+            // 
+            this.columnScore.Text = "Score";
             // 
             // FrmMain
             // 
@@ -164,9 +178,9 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlText;
             this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Controls.Add(this.btnRestart);
-            this.Controls.Add(this.lblEnd2);
-            this.Controls.Add(this.lblEnd1);
+            this.Controls.Add(this.listScores);
+            this.Controls.Add(this.btnStart);
+            this.Controls.Add(this.lblEnd);
             this.Controls.Add(this.lblScore);
             this.Controls.Add(this.picGround);
             this.Controls.Add(this.picPipeBottom);
@@ -199,11 +213,13 @@
         private System.Windows.Forms.PictureBox picGround;
         private System.Windows.Forms.Timer timerGame;
         private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label lblEnd1;
-        private System.Windows.Forms.Label lblEnd2;
-        private System.Windows.Forms.Button btnRestart;
+        private System.Windows.Forms.Label lblEnd;
+        private System.Windows.Forms.Button btnStart;
         private System.Windows.Forms.PictureBox picPipeBottom2;
         private System.Windows.Forms.PictureBox picPipeTop2;
+        private System.Windows.Forms.ListView listScores;
+        private System.Windows.Forms.ColumnHeader columnName;
+        private System.Windows.Forms.ColumnHeader columnScore;
     }
 }
 
