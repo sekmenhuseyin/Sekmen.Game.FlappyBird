@@ -7,10 +7,11 @@ namespace Sekmen.Game.FlappyBird
 {
     public class GameEngine
     {
-        public int PipeSpeed = Speed;
         public int Gravity = Speed;
-        public int Score;
         public bool Jumping;
+        public int PipeSpeed = Speed;
+        public int Score;
+        private const int Speed = 5;
 
         /// <summary>
         /// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
@@ -19,7 +20,7 @@ namespace Sekmen.Game.FlappyBird
         /// You should keep a single Random instance and keep using Next on the same instance.
         /// </summary>
         private static readonly RandomNumberGenerator Generator = RandomNumberGenerator.Create();
-        private const int Speed = 5;
+
         private readonly FrmMain _frmMain;
         private readonly int _pipeWidth;
 
@@ -51,6 +52,38 @@ namespace Sekmen.Game.FlappyBird
             return (int)(min + (max - min) * (scale / (double)uint.MaxValue));
         }
 
+        public void CheckGameEnd()
+        {
+            var bounds = new Rectangle(_frmMain.picFlappyBird.Bounds.X + 3,
+                _frmMain.picFlappyBird.Bounds.Y + 3,
+                _frmMain.picFlappyBird.Bounds.Width - 6,
+                _frmMain.picFlappyBird.Bounds.Height - 6);
+
+            // ReSharper disable once InvertIf
+            if (bounds.Top < -100 ||
+                bounds.IntersectsWith(_frmMain.picGround.Bounds) ||
+                bounds.IntersectsWith(_frmMain.picPipeBottom.Bounds) ||
+                bounds.IntersectsWith(_frmMain.picPipeTop.Bounds) ||
+                bounds.IntersectsWith(_frmMain.picPipeBottom2.Bounds) ||
+                bounds.IntersectsWith(_frmMain.picPipeTop2.Bounds))
+            {
+                _frmMain.GameEnd();
+                _frmMain.btnStart.Focus();
+            }
+        }
+
+        public void GameStart()
+        {
+            Score = 0;
+            Gravity = 0;
+            PipeSpeed = 0;
+            MoveBird(true);
+            _frmMain.lblEnd.Visible = _frmMain.listScores.Visible = _frmMain.btnStart.Visible = false;
+            _frmMain.lblScore.Visible = true;
+            _frmMain.timerGame.Start();
+            _frmMain.Focus();
+        }
+
         public void Jump(bool jumping)
         {
             Jumping = jumping;
@@ -76,25 +109,9 @@ namespace Sekmen.Game.FlappyBird
             _frmMain.lblScore.Text = @"Score: " + Score;
         }
 
-        public void CheckGameEnd()
+        public void MovePipe(Control pipeTop, Control pipeBottom, int left)
         {
-            var bounds = new Rectangle(_frmMain.picFlappyBird.Bounds.X + 3,
-                _frmMain.picFlappyBird.Bounds.Y + 3,
-                _frmMain.picFlappyBird.Bounds.Width - 6,
-                _frmMain.picFlappyBird.Bounds.Height - 6);
-
-            // ReSharper disable once InvertIf
-            if (bounds.Top < -100 ||
-                bounds.IntersectsWith(_frmMain.picGround.Bounds) ||
-                bounds.IntersectsWith(_frmMain.picPipeBottom.Bounds) ||
-                bounds.IntersectsWith(_frmMain.picPipeTop.Bounds) ||
-                bounds.IntersectsWith(_frmMain.picPipeBottom2.Bounds) ||
-                bounds.IntersectsWith(_frmMain.picPipeTop2.Bounds))
-            {
-                _frmMain.GameEnd();
-                _frmMain.btnStart.Focus();
-            }
+            pipeTop.Left = pipeBottom.Left = left;
         }
-
     }
 }

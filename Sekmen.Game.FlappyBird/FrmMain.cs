@@ -45,14 +45,9 @@ namespace Sekmen.Game.FlappyBird
 
         private void BtnRestart_Click(object sender, EventArgs e)
         {
-            _gameEngine.Score = 0;
-            _gameEngine.MoveBird(true);
-            picPipeTop.Left = picPipeBottom.Left = Width + picPipeTop.Width;
-            picPipeTop2.Left = picPipeBottom2.Left = (int)(Width * 1.6) + picPipeTop2.Width;
-            lblEnd.Visible = listScores.Visible = btnStart.Visible = false;
-            lblScore.Visible = true;
-            timerGame.Start();
-            Focus();
+            //_gameEngine.MovePipe(picPipeTop, picPipeBottom, Width);
+            //_gameEngine.MovePipe(picPipeTop2, picPipeBottom2, (int)(Width * 1.6));
+            _gameEngine.GameStart();
         }
     }
 }
