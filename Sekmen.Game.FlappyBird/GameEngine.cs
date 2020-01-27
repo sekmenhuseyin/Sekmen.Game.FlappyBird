@@ -7,6 +7,10 @@ namespace Sekmen.Game.FlappyBird
 {
     public class GameEngine
     {
+        public int PipeSpeed = Speed;
+        public int Gravity = Speed;
+        public int Score;
+        public bool Jumping;
 
         /// <summary>
         /// https://stackoverflow.com/questions/2706500/how-do-i-generate-a-random-int-number-in-c
@@ -15,12 +19,7 @@ namespace Sekmen.Game.FlappyBird
         /// You should keep a single Random instance and keep using Next on the same instance.
         /// </summary>
         private static readonly RandomNumberGenerator Generator = RandomNumberGenerator.Create();
-
-        public int PipeSpeed = 5;
-        public int Gravity = 5;
-        public int Score;
-        public bool Jumping;
-
+        private const int Speed = 5;
         private readonly FrmMain _frmMain;
         private readonly int _pipeWidth;
 
@@ -52,6 +51,17 @@ namespace Sekmen.Game.FlappyBird
             return (int)(min + (max - min) * (scale / (double)uint.MaxValue));
         }
 
+        public void Jump(bool jumping)
+        {
+            Jumping = jumping;
+            Gravity = jumping ? -Speed : Speed;
+        }
+
+        public void MoveBird(bool reset = false)
+        {
+            _frmMain.picFlappyBird.Top = reset ? 0 : _frmMain.picFlappyBird.Top + Gravity;
+        }
+
         public void MovePipe(Control pipeTop, Control pipeBottom)
         {
             pipeTop.Left = pipeBottom.Left -= PipeSpeed;
@@ -63,6 +73,7 @@ namespace Sekmen.Game.FlappyBird
             pipeBottom.Top = pipeTop.Top + 450;
 
             Score += 1;
+            _frmMain.lblScore.Text = @"Score: " + Score;
         }
 
         public void CheckGameEnd()
@@ -72,13 +83,16 @@ namespace Sekmen.Game.FlappyBird
                 _frmMain.picFlappyBird.Bounds.Width - 6,
                 _frmMain.picFlappyBird.Bounds.Height - 6);
 
-            if (bounds.IntersectsWith(_frmMain.picGround.Bounds) ||
+            // ReSharper disable once InvertIf
+            if (bounds.Top < -100 ||
+                bounds.IntersectsWith(_frmMain.picGround.Bounds) ||
                 bounds.IntersectsWith(_frmMain.picPipeBottom.Bounds) ||
                 bounds.IntersectsWith(_frmMain.picPipeTop.Bounds) ||
                 bounds.IntersectsWith(_frmMain.picPipeBottom2.Bounds) ||
                 bounds.IntersectsWith(_frmMain.picPipeTop2.Bounds))
             {
-                //_frmMain.GameEnd();
+                _frmMain.GameEnd();
+                _frmMain.btnStart.Focus();
             }
         }
 
