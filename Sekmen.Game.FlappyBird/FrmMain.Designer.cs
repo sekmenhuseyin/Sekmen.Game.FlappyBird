@@ -29,6 +29,7 @@
         private void InitializeComponent()
         {
             this.components = new System.ComponentModel.Container();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmMain));
             this.picFlappyBird = new System.Windows.Forms.PictureBox();
             this.picPipeTop = new System.Windows.Forms.PictureBox();
             this.picPipeBottom = new System.Windows.Forms.PictureBox();
@@ -103,9 +104,9 @@
             this.lblScore.ForeColor = System.Drawing.SystemColors.Menu;
             this.lblScore.Location = new System.Drawing.Point(295, 21);
             this.lblScore.Name = "lblScore";
-            this.lblScore.Size = new System.Drawing.Size(56, 20);
+            this.lblScore.Size = new System.Drawing.Size(76, 20);
             this.lblScore.TabIndex = 4;
-            this.lblScore.Text = "Score";
+            this.lblScore.Text = "Score: 0";
             this.lblScore.Visible = false;
             // 
             // lblEnd
@@ -189,6 +190,7 @@
             this.Controls.Add(this.picPipeBottom2);
             this.Controls.Add(this.picPipeTop2);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmMain";
             this.Text = "Flappy Bird";
             this.Load += new System.EventHandler(this.FrmMain_Load);

@@ -75,10 +75,10 @@ namespace Sekmen.Game.FlappyBird
         public void GameStart()
         {
             Score = 0;
-            Gravity = 0;
-            PipeSpeed = 0;
+            Gravity = Speed;
             MoveBird(true);
             _frmMain.lblEnd.Visible = _frmMain.listScores.Visible = _frmMain.btnStart.Visible = false;
+            _frmMain.lblScore.Text = @"Score: 0";
             _frmMain.lblScore.Visible = true;
             _frmMain.timerGame.Start();
             _frmMain.Focus();

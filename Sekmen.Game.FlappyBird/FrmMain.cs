@@ -45,8 +45,8 @@ namespace Sekmen.Game.FlappyBird
 
         private void BtnRestart_Click(object sender, EventArgs e)
         {
-            //_gameEngine.MovePipe(picPipeTop, picPipeBottom, Width);
-            //_gameEngine.MovePipe(picPipeTop2, picPipeBottom2, (int)(Width * 1.6));
+            _gameEngine.MovePipe(picPipeTop, picPipeBottom, Width);
+            _gameEngine.MovePipe(picPipeTop2, picPipeBottom2, (int)(Width * 1.6));
             _gameEngine.GameStart();
         }
     }
