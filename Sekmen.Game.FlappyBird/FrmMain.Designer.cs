@@ -207,19 +207,19 @@
 
         #endregion
 
-        private System.Windows.Forms.PictureBox picFlappyBird;
-        private System.Windows.Forms.PictureBox picPipeTop;
-        private System.Windows.Forms.PictureBox picPipeBottom;
-        private System.Windows.Forms.PictureBox picGround;
-        private System.Windows.Forms.Timer timerGame;
-        private System.Windows.Forms.Label lblScore;
-        private System.Windows.Forms.Label lblEnd;
-        private System.Windows.Forms.Button btnStart;
-        private System.Windows.Forms.PictureBox picPipeBottom2;
-        private System.Windows.Forms.PictureBox picPipeTop2;
-        private System.Windows.Forms.ListView listScores;
-        private System.Windows.Forms.ColumnHeader columnName;
-        private System.Windows.Forms.ColumnHeader columnScore;
+        public System.Windows.Forms.PictureBox picFlappyBird;
+        public System.Windows.Forms.PictureBox picPipeTop;
+        public System.Windows.Forms.PictureBox picPipeBottom;
+        public System.Windows.Forms.PictureBox picGround;
+        public System.Windows.Forms.Timer timerGame;
+        public System.Windows.Forms.Label lblScore;
+        public System.Windows.Forms.Label lblEnd;
+        public System.Windows.Forms.Button btnStart;
+        public System.Windows.Forms.PictureBox picPipeBottom2;
+        public System.Windows.Forms.PictureBox picPipeTop2;
+        public System.Windows.Forms.ListView listScores;
+        public System.Windows.Forms.ColumnHeader columnName;
+        public System.Windows.Forms.ColumnHeader columnScore;
     }
 }
 
